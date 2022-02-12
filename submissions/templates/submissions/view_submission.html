@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Submission - {{ submission.id }}</h1>
+    <table class="table table-hover">
+        <tr>
+            <th>User</th>
+            <th>Submission</th>
+            <th>Marks</th>
+        </tr>
+        <tr>
+            <td>{{ submission.user.username }}</td>
+            <td>{{ submission.submission_url }}</td>
+            <td>{{ submission.marks }}</td>
+        </tr>
+    </table>
+    {% if user.is_superuser and submission.marks == null %}
+    <a href="{% url 'add_marks' pk=submission.id %}" class="btn btn-success mt-2">Add Marks</a>
+    {% endif %}
+</div>
+{% endblock %}

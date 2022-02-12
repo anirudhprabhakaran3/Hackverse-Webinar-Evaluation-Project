@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Student Dashboard</h1>
+    <p>Welcome to student dashboard.</p>
+</div>
+
+<div class="container w-50 text-left">
+    {% if not submission %}
+    <a href="{% url 'add_submission' %}" class="btn btn-success">Add Submission</a>
+    {% else %}
+        {% if submission.marks == null %}
+        Your submission hasn't been evaluated yet.
+        {% else %}
+        Your submission has been submitted. Marks allotted = {{ submission.marks }}
+        {% endif %}
+    {% endif %}
+    <p>Your submission - <a href="{{ submission.submission_url }}">{{submission.submission_url}}</a></p>
+</div>
+{% endblock %}

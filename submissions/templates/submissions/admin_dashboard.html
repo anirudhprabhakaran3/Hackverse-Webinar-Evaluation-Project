@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Admin Dashboard</h1>
+    <p>Welcome to admin dashboard.</p>
+</div>
+
+<div class="container w-50 text-left">
+    <h3>Submissions</h3>
+    {% if submissions %}
+        <ul>
+        {% for s in submissions %}
+            <li><a href="{% url 'view_submission' pk=s.id %}"> {{ s.submission_url }} </a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}
